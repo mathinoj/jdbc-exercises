@@ -12,24 +12,24 @@ public class MySQLAlbumsDAO {
     private Connection connection = null;
 
     // we can do simple testing using the class' main method
-    public static void main(String[] args) {
-
-
-        MySQLAlbumsDAO albumDao = new MySQLAlbumsDAO();
-
-        try {
-            albumDao.createConnection();
-
-            System.out.println("Using the connection...");
-            int numAlbums = albumDao.getTotalAlbums();
-            System.out.println("Total # of album records: " + numAlbums);
-        } catch(MySQLAlbumsException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            albumDao.closeConnection();
-        }
-
-    }
+//    public static void main(String[] args) {
+//
+//
+//        MySQLAlbumsDAO albumDao = new MySQLAlbumsDAO();
+//
+//        try {
+//            albumDao.createConnection();
+//
+//            System.out.println("Using the connection...");
+//            int numAlbums = albumDao.getTotalAlbums();
+//            System.out.println("Total # of album records: " + numAlbums);
+//        } catch(MySQLAlbumsException e) {
+//            System.out.println(e.getMessage());
+//        } finally {
+//            albumDao.closeConnection();
+//        }
+//
+//    }
 
 
 
@@ -49,13 +49,10 @@ public class MySQLAlbumsDAO {
         }
     }
 
-    private int getTotalAlbums() throws MySQLAlbumsException {
+    public int getTotalAlbums() throws MySQLAlbumsException {
         int count = 0;
-//        List<Count> counts = new ArrayList<>();
         try {
             //TODO: fetch the total number of albums from the albums table and assign it to the local variable
-//            DriverManager.registerDriver(new Driver());
-//            Connection connection = DriverManager.getConnection(Config.getUrl());
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select count(*) from albums");
