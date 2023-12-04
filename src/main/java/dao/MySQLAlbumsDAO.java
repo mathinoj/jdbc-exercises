@@ -55,11 +55,13 @@ public class MySQLAlbumsDAO {
             //TODO: fetch the total number of albums from the albums table and assign it to the local variable
 
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select count(*) from albums");
-            while (resultSet.next()) {
-//                System.out.println("Number of albums: " +resultSet.getInt(1));
-                return resultSet.getInt(1);
-            }
+//            ResultSet resultSet = statement.executeQuery("select count(*) from albums");
+            ResultSet resultSet = statement.executeQuery("select * from albums");
+//            while (resultSet.next()) {
+            resultSet.next();
+            count = resultSet.getInt(1);
+//                count++;
+//            }
         } catch (SQLException e) {
             throw new MySQLAlbumsException("Error executing query: " + e.getMessage() + "!!!");
         }
