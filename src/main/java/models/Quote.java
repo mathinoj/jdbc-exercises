@@ -19,15 +19,15 @@ public class Quote {
         this.content = content;
     }
 
-    @Override
-    public String toString() {
-        return "Quote{" +
-                "id=" + id +
-                //can remove ID if you want
-                ", author='" + author + '\'' +
-                ", content='" + content + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Quote{" +
+//                "id=" + id +
+//                //can remove ID if you want
+//                ", author='" + author + '\'' +
+//                ", content='" + content + '\'' +
+//                '}';
+//    }
 
     public int getId() {
         return id;

@@ -1,3 +1,5 @@
+package dao;
+
 import com.mysql.cj.jdbc.Driver;
 import config.Config;
 import dao.MySQLQuotesDAO;
