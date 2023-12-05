@@ -2,15 +2,15 @@ package dao;
 
 import com.mysql.cj.jdbc.Driver;
 import config.Config;
-import models.Quote;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-public class MySQLAlbumsDAO {
+public class MySQLDAO {
     // initialize the connection to null so we know whether or not to close it when done
-    private Connection connection = null;
+    protected Connection connection = null;
+
 
     public void createConnection() throws MySQLAlbumsException {
         System.out.printf("Trying to connect... ");
@@ -27,30 +27,6 @@ public class MySQLAlbumsDAO {
             throw new MySQLAlbumsException("connection failed!!!");
         }
     }
-
-    public int getTotalAlbums() throws MySQLAlbumsException {
-        int count = 0;
-        try {
-            //TODO: fetch the total number of albums from the albums table and assign it to the local variable
-
-            Statement statement = connection.createStatement();
-
-
-            ResultSet resultSet = statement.executeQuery("select * from albums");
-            resultSet.next();
-            count = resultSet.getInt(1);
-
-            //OTHER WAY
-//            ResultSet resultSet = statement.executeQuery("select count(*) from albums");
-//            while (resultSet.next()) {
-//                count++;
-//            }
-        } catch (SQLException e) {
-            throw new MySQLAlbumsException("Error executing query: " + e.getMessage() + "!!!");
-        }
-        return count;
-    }
-
 
     public void closeConnection() {
         if(connection == null) {
