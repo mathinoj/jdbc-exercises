@@ -32,16 +32,16 @@ public class FileUtils {
 
     //THIS ADDS A NEW CONTACT
     static void writeContactToFile(Contact contact) {
-        String contactLine = String.format("%s|%s", contact.getFullName(), contact.getPhoneNumber());
-        try {
-            Files.write(
-                    dataFile,
-                    Arrays.asList(contactLine), // list with one item
-                    StandardOpenOption.APPEND
-            );
-        } catch (Exception e){
-            e.printStackTrace();
-        }
+//        String contactLine = String.format("%s|%s", contact.getFullName(), contact.getPhoneNumber());
+//        try {
+//            Files.write(
+//                    dataFile,
+//                    Arrays.asList(contactLine), // list with one item
+//                    StandardOpenOption.APPEND
+//            );
+//        } catch (Exception e){
+//            e.printStackTrace();
+//        }
     }
 
     //THIS VIEWS ALL CONTACTS

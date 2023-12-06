@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FileContactsDAO implements ContactsDAO{
@@ -27,11 +30,35 @@ public class FileContactsDAO implements ContactsDAO{
 
     @Override
     public long insertContact(Contact contact) {
+        String contactLine = String.format("%s|%s", contact.getFullName(), contact.getPhoneNumber());
+        try {
+            Files.write(
+                    dataFile,
+                    Arrays.asList(contactLine), // list with one item
+                    StandardOpenOption.APPEND
+            );
+        } catch (Exception e){
+            e.printStackTrace();
+        }
         return 0;
     }
 
     @Override
     public void deleteByName(String name) {
+        try {
+            List<String> lines = Files.readAllLines(dataFile);
+            List<String> writeLines = new ArrayList<>();
+
+            for (String line: lines) {
+                if(!line.toUpperCase().startsWith(name.toUpperCase())){
+                    writeLines.add(line);
+                }
+            }
+
+            Files.write(dataFile, writeLines);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

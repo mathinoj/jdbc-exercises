@@ -29,7 +29,9 @@ public class App {
                     String fn = input.getString("Give me the full name");
                     String phone = input.getString("Give me the phone number");
                     Contact contact = new Contact(fn, phone);
-                    FileUtils.writeContactToFile(contact);
+                    long newId = contactsDAO.insertContact(contact);
+                    contact.setId(newId);
+//                    FileUtils.writeContactToFile(contact);
                     break;
                 case 3:
                     String term = input.getString("Give me the name to search");
