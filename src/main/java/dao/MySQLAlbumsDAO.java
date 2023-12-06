@@ -75,13 +75,6 @@ public class MySQLAlbumsDAO extends MySQLDAO{
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from albums");
             while (resultSet.next()) {
-//                albums.add(
-//                resultSet.getLong("id") +
-//                resultSet.getString("artist") +
-//                resultSet.getString("name") +
-//                resultSet.getInt("release_date") +
-//                resultSet.getDouble("sales") +
-//                resultSet.getString("genre"));
                 albums.add(makeAlbumFromDB(resultSet));
             }
         } catch (SQLException e) {
@@ -122,11 +115,10 @@ public class MySQLAlbumsDAO extends MySQLDAO{
         long id = 0;
 
         // TODO: write your code here
-        PreparedStatement st = null;
         try {
-            st = connection.prepareStatement("insert into albums" +
-             "(artist, name, release_date, sales, genre) " +
-             "values(?, ?, ?, ?, ?)",
+        PreparedStatement st = connection.prepareStatement("insert into albums " +
+             " (artist, name, release_date, sales, genre) " +
+             " values(?, ?, ?, ?, ?) ",
              Statement.RETURN_GENERATED_KEYS);
             st.setString(1, album.getArtist());
             st.setString(2, album.getName());
@@ -134,7 +126,7 @@ public class MySQLAlbumsDAO extends MySQLDAO{
             st.setDouble(4, album.getSales());
             st.setString(5, album.getGenre());
 
-            int numInserted = st.executeUpdate();
+            st.executeUpdate();
             ResultSet keys = st.getGeneratedKeys();
             keys.next();
 
