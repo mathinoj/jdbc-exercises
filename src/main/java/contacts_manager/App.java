@@ -39,7 +39,9 @@ public class App {
                     break;
                 case 4:
                     String aNumber = input.getString("Give me the name to delete");
-                    FileUtils.delete(aNumber);
+//                    FileUtils.delete(aNumber);
+                    contactsDAO.deleteByName(aNumber);
+                    System.out.println(aNumber+ " has been deleted.");
                     break;
                 case 5:
                     System.exit(0);

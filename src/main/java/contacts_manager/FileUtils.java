@@ -17,17 +17,17 @@ public class FileUtils {
     private final static Path dataFile = Paths.get(directory, filename);
 
     static void createDirs(){
-        try{
-            if (Files.notExists(dataDirectory)) {
-                Files.createDirectories(dataDirectory);
-            }
-
-            if (! Files.exists(dataFile)) {
-                Files.createFile(dataFile);
-            }
-        } catch (Exception e){
-            e.printStackTrace();
-        }
+//        try{
+//            if (Files.notExists(dataDirectory)) {
+//                Files.createDirectories(dataDirectory);
+//            }
+//
+//            if (! Files.exists(dataFile)) {
+//                Files.createFile(dataFile);
+//            }
+//        } catch (Exception e){
+//            e.printStackTrace();
+//        }
     }
 
     //THIS ADDS A NEW CONTACT
@@ -46,8 +46,8 @@ public class FileUtils {
 
     //THIS VIEWS ALL CONTACTS
     static void readFile(){
-        System.out.println("Name | Phone number\n" +
-                "---------------");
+//        System.out.println("Name | Phone number\n" +
+//                "---------------");
 //        try {
 //            List<String> lines = Files.readAllLines(dataFile);
 //            for (String line: lines) {
@@ -75,20 +75,20 @@ public class FileUtils {
 
     //THIS DELETES A CONTACT
     static void delete(String name) {
-        try {
-            List<String> lines = Files.readAllLines(dataFile);
-            List<String> writeLines = new ArrayList<>();
-
-            for (String line: lines) {
-                if(!line.toUpperCase().startsWith(name.toUpperCase())){
-                    writeLines.add(line);
-                }
-            }
-
-            Files.write(dataFile, writeLines);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            List<String> lines = Files.readAllLines(dataFile);
+//            List<String> writeLines = new ArrayList<>();
+//
+//            for (String line: lines) {
+//                if(!line.toUpperCase().startsWith(name.toUpperCase())){
+//                    writeLines.add(line);
+//                }
+//            }
+//
+//            Files.write(dataFile, writeLines);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
 

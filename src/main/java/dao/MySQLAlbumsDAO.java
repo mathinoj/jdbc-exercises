@@ -177,8 +177,6 @@ public class MySQLAlbumsDAO extends MySQLDAO{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     public void closeConnection() {

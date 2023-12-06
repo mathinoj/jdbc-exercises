@@ -16,6 +16,8 @@ public class FileContactsDAO implements ContactsDAO{
 
     @Override
     public List<Contact> fetchContacts() {
+        System.out.println("Name | Phone number\n" +
+                "---------------");
         try {
             List<String> lines = Files.readAllLines(dataFile);
 //            List<Contact> lines = Files.lines()
