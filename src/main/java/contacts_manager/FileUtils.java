@@ -61,16 +61,16 @@ public class FileUtils {
 
     //THIS SEARCHES FOR A CONTACT NAME
     static void search(String term){
-        try {
-            List<String> lines = Files.readAllLines(dataFile);
-            for (String line: lines) {
-                if(line.toLowerCase().startsWith(term.toLowerCase())){
-                    System.out.println(line);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            List<String> lines = Files.readAllLines(dataFile);
+//            for (String line: lines) {
+//                if(line.toLowerCase().startsWith(term.toLowerCase())){
+//                    System.out.println(line);
+//                }
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     //THIS DELETES A CONTACT

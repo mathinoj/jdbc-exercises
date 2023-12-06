@@ -66,6 +66,16 @@ public class FileContactsDAO implements ContactsDAO{
 
     @Override
     public List<Contact> searchContacts(String searchTerm) {
+        try {
+            List<String> lines = Files.readAllLines(dataFile);
+            for (String line: lines) {
+                if(line.toLowerCase().startsWith(searchTerm.toLowerCase())){
+                    System.out.println(line);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 

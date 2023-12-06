@@ -20,11 +20,10 @@ public class App {
             int option = input.getInt(1, 5);
             switch (option){
                 case 1:
+                    List<Contact> contacts = contactsDAO.fetchContacts();
+                    break;
 //                    FileUtils.readFile();
 //                    break;
-                    List<Contact> contacts = contactsDAO.fetchContacts();
-//                    printContacts(contacts);
-                    break;
                 case 2:
                     String fn = input.getString("Give me the full name");
                     String phone = input.getString("Give me the phone number");
@@ -35,7 +34,8 @@ public class App {
                     break;
                 case 3:
                     String term = input.getString("Give me the name to search");
-                    FileUtils.search(term);
+                    contactsDAO.searchContacts(term);
+//                    FileUtils.search(term);
                     break;
                 case 4:
                     String aNumber = input.getString("Give me the name to delete");
