@@ -80,25 +80,15 @@ public class MySQLContactsDAO implements ContactsDAO {
     public List<Contact> searchContacts(String searchTerm) {
         Contact contact = null;
         try {
-            PreparedStatement st = connection.prepareStatement("select * from contacts " +
-                    " where name = ? ");
-//            st.setString(1, searchTerm);
-//            ResultSet rs = st.executeQuery();
-//            rs.next();
-//            contact = new Contact();
-//            contact.setId(rs.getLong("id"));
-//            contact.setFullName(rs.getString("name"));
-//            contact.setPhoneNumber(rs.getString("phone"));
             List<Contact> contacts = fetchContacts();
             List<Contact> results = new ArrayList<>();
-            for (Contact x : contacts) {
-                if (x.getFullName().toLowerCase().contains(searchTerm.toLowerCase())) {
-                    results.add(x);
+            for (Contact contactList : contacts) {
+                if (contactList.getFullName().toLowerCase().contains(searchTerm.toLowerCase())) {
+                    results.add(contactList);
                 }
             }
-
             return results;
-        } catch (SQLException e) {
+        } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
     }
