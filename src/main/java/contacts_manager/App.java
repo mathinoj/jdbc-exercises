@@ -6,7 +6,9 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        ContactsDAO contactsDAO = new FileContactsDAO();
+        ContactsDAO contactsDAO = new MySQLContactsDAO();
+
+//        contactsDAO.createConnection();
 
         Input input = new Input();
 
@@ -21,6 +23,7 @@ public class App {
             switch (option){
                 case 1:
                     List<Contact> contacts = contactsDAO.fetchContacts();
+                    System.out.println(contacts);
                     break;
 //                    FileUtils.readFile();
 //                    break;

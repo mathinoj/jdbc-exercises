@@ -1,5 +1,11 @@
 package contacts_manager;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Contact {
     // note that id is not used in the original Java 2 Contacts Manager
     // we have added it here so that it will transition better to a rel. db
@@ -12,6 +18,22 @@ public class Contact {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
     }
+
+    @Override
+    public String toString() {
+//        return fullName + " | " + phoneNumber +'\n';
+        return fullName + " | " + phoneNumber;
+    }
+
+
+//    @Override
+//    public String toString() {
+//        return "Contact{" +
+//                "id=" + id +
+//                ", fullName='" + fullName + '\'' +
+//                ", phoneNumber='" + phoneNumber + '\'' +
+//                '}';
+//    }
 
     public long getId() {
         return id;
@@ -37,3 +59,24 @@ public class Contact {
         this.phoneNumber = phoneNumber;
     }
 }
+
+
+//    @Override
+//    public List<Contact> fetchContacts() {
+//        System.out.println("Name | Phone number\n" +
+//                "---------------");
+//        List<Contact> contacts = new ArrayList<>();
+//        try {
+//            Statement st = connection.createStatement();
+//            ResultSet rs = st.executeQuery("select * from contacts");
+//            while(rs.next()){
+//                Contact contact = new Contact(rs.getString("name"), rs.getString("phone") + '\n');
+//
+//                contact.setId(rs.getLong("id"));
+//                contacts.add(contact);
+//            }
+//        } catch (SQLException e){
+//            throw new RuntimeException("Error executing query: " +e.getMessage() +"!!!");
+//        }
+//        return contacts;
+//    }

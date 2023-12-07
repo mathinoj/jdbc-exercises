@@ -10,11 +10,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FileUtils {
-    private final static String directory = "data";
-    private final static String filename = "contacts.txt";
-
-    private final static Path dataDirectory = Paths.get(directory);
-    private final static Path dataFile = Paths.get(directory, filename);
+//    private final static String directory = "data";
+//    private final static String filename = "contacts.txt";
+//
+//    private final static Path dataDirectory = Paths.get(directory);
+//    private final static Path dataFile = Paths.get(directory, filename);
 
     static void createDirs(){
 //        try{

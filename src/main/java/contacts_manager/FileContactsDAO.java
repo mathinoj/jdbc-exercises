@@ -5,16 +5,19 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class FileContactsDAO implements ContactsDAO{
+public class FileContactsDAO {
     private final static String directory = "data";
     private final static String filename = "contacts.txt";
     private final static Path dataFile = Paths.get(directory, filename);
+    private Connection connection = null;
 
-    @Override
+
     public List<Contact> fetchContacts() {
         System.out.println("Name | Phone number\n" +
                 "---------------");
@@ -30,7 +33,7 @@ public class FileContactsDAO implements ContactsDAO{
         return null;
     }
 
-    @Override
+
     public long insertContact(Contact contact) {
         String contactLine = String.format("%s|%s", contact.getFullName(), contact.getPhoneNumber());
         try {
@@ -45,7 +48,7 @@ public class FileContactsDAO implements ContactsDAO{
         return 0;
     }
 
-    @Override
+
     public void deleteByName(String name) {
         try {
             List<String> lines = Files.readAllLines(dataFile);
@@ -64,7 +67,7 @@ public class FileContactsDAO implements ContactsDAO{
 
     }
 
-    @Override
+
     public List<Contact> searchContacts(String searchTerm) {
         try {
             List<String> lines = Files.readAllLines(dataFile);
@@ -79,13 +82,13 @@ public class FileContactsDAO implements ContactsDAO{
         return null;
     }
 
-    @Override
-    public void open() {
 
-    }
-
-    @Override
-    public void close() {
-
-    }
+//    public void open() {
+//
+//    }
+//
+//
+//    public void close() {
+//        close();
+//    }
 }

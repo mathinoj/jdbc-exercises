@@ -10,4 +10,6 @@ public interface ContactsDAO {
     List<Contact> searchContacts(String searchTerm);
     void open();
     void close();
+
+
 }

@@ -2,16 +2,19 @@ package dao;
 
 import com.mysql.cj.jdbc.Driver;
 import config.Config;
+import contacts_manager.Contact;
 import models.Album;
 import models.Quote;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLAlbumsDAO extends MySQLDAO{
     // initialize the connection to null so we know whether or not to close it when done
-    private Connection connection = null;
+//    private Connection connection = null;
 
     public void createConnection() throws MySQLAlbumsException {
         System.out.printf("Trying to connect... ");
@@ -178,6 +181,7 @@ public class MySQLAlbumsDAO extends MySQLDAO{
             throw new RuntimeException(e);
         }
     }
+
 
     public void closeConnection() {
         if(connection == null) {
