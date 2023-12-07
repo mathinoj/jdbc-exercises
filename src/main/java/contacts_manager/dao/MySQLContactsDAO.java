@@ -1,20 +1,15 @@
-package contacts_manager;
+package contacts_manager.dao;
 
 import com.mysql.cj.jdbc.Driver;
-import com.sun.source.tree.TryTree;
 import config.Config;
+import contacts_manager.models.Contact;
 import dao.MySQLAlbumsException;
-import models.Album;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class MySQLContactsDAO implements ContactsDAO{
+public class MySQLContactsDAO implements ContactsDAO {
     private Connection connection = null;
 
     public MySQLContactsDAO() {
@@ -59,8 +54,8 @@ public class MySQLContactsDAO implements ContactsDAO{
             ResultSet keys = st.getGeneratedKeys();
             keys.next();
 
-            long newId = keys.getLong(1);
-            return newId;
+//            long newId = keys.getLong(1);
+            return keys.getLong(1);
 
         } catch (SQLException e){
             throw new RuntimeException(e);
@@ -69,9 +64,7 @@ public class MySQLContactsDAO implements ContactsDAO{
     }
 
     @Override
-    public void deleteByName(String name) {
-        List<Contact> contacts = new ArrayList<>();
-        Contact contact = null;
+    public void deleteByName(String name) {;
         try{
             PreparedStatement st = connection.prepareStatement("delete from contacts " +
             " where name = ? ");
@@ -85,7 +78,29 @@ public class MySQLContactsDAO implements ContactsDAO{
 
     @Override
     public List<Contact> searchContacts(String searchTerm) {
-        return null;
+        Contact contact = null;
+        try {
+            PreparedStatement st = connection.prepareStatement("select * from contacts " +
+                    " where name = ? ");
+//            st.setString(1, searchTerm);
+//            ResultSet rs = st.executeQuery();
+//            rs.next();
+//            contact = new Contact();
+//            contact.setId(rs.getLong("id"));
+//            contact.setFullName(rs.getString("name"));
+//            contact.setPhoneNumber(rs.getString("phone"));
+            List<Contact> contacts = fetchContacts();
+            List<Contact> results = new ArrayList<>();
+            for (Contact x : contacts) {
+                if (x.getFullName().toLowerCase().contains(searchTerm.toLowerCase())) {
+                    results.add(x);
+                }
+            }
+
+            return results;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void open() {

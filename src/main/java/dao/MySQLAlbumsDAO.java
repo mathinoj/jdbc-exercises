@@ -2,12 +2,8 @@ package dao;
 
 import com.mysql.cj.jdbc.Driver;
 import config.Config;
-import contacts_manager.Contact;
 import models.Album;
-import models.Quote;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

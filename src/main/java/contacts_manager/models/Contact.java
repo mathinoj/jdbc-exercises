@@ -1,4 +1,4 @@
-package contacts_manager;
+package contacts_manager.models;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +17,10 @@ public class Contact {
         this.id = 1;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
+    }
+
+    public Contact() {
+
     }
 
     @Override

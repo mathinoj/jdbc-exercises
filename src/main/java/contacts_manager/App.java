@@ -1,6 +1,9 @@
 package contacts_manager;
 
-import dao.MySQLAlbumsDAO;
+import contacts_manager.dao.ContactsDAO;
+import contacts_manager.dao.MySQLContactsDAO;
+import contacts_manager.models.Contact;
+import contacts_manager.utils.Input;
 
 import java.util.List;
 
@@ -37,7 +40,8 @@ public class App {
                     break;
                 case 3:
                     String term = input.getString("Give me the name to search");
-                    contactsDAO.searchContacts(term);
+                    List<Contact> searched = contactsDAO.searchContacts(term);
+                    System.out.println(searched);
 //                    FileUtils.search(term);
                     break;
                 case 4:
